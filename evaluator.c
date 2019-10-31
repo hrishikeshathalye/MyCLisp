@@ -701,7 +701,7 @@ lval * builtin_var(lenv * e, lval * a, char * func) {
     return lval_sexpr();
 }
 
-lval * lval_call(lenv * e, lval * f, lval * a) {
+lval * lval_call(lenv* e, lval* f, lval* a) {
 
     /* If Builtin then simply apply that */
     if (f -> builtin) {
@@ -772,8 +772,8 @@ lval * lval_call(lenv * e, lval * f, lval * a) {
         lval_del(lval_pop(f -> formals, 0));
 
         /* Pop next symbol and create empty list */
-        lval * sym = lval_pop(f -> formals, 0);
-        lval * val = lval_qexpr();
+        lval* sym = lval_pop(f -> formals, 0);
+        lval* val = lval_qexpr();
 
         /* Bind to environment and delete */
         lenv_put(f -> env, sym, val);
@@ -966,13 +966,13 @@ lval * lval_read_str(mpc_ast_t * t) {
     return str;
 }
 
-lval * builtin_load(lenv * e, lval * a) {
+lval* builtin_load(lenv* e, lval* a) {
     LASSERT_NUM("load", a, 1);
     LASSERT_TYPE("load", a, 0, LVAL_STR);
 
     /* Parse File given by string name */
     mpc_result_t r;
-    if (mpc_parse_contents(a -> cell[0] -> str, MyCLisp, & r)) {
+    if (mpc_parse_contents(a -> cell[0] -> str, MyCLisp, &r)) {
 
         /* Read contents */
         lval * expr = lval_read(r.output);
@@ -1025,7 +1025,7 @@ lval * builtin_print(lenv * e, lval * a) {
     return lval_sexpr();
 }
 
-lval * builtin_error(lenv * e, lval * a) {
+lval* builtin_error(lenv * e, lval * a) {
     LASSERT_NUM("error", a, 1);
     LASSERT_TYPE("error", a, 0, LVAL_STR);
 

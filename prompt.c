@@ -24,8 +24,8 @@ int main(int argc, char ** argv) {
     /* Defining the parsers */
     mpca_lang(MPCA_LANG_DEFAULT,
     "                                                     \
-    number   : /-?[0-9]+(\\.[0-9]+)?/;                             \
-    symbol :/[a-zA-Z0-9_+\\-*\\/\\\\=<>!&]+/;   \
+    number   : /-?[0-9]+(\\.[0-9]+)?/ ;                             \
+    symbol :/[a-zA-Z0-9_+\\-*\\/\\\\=<>!&]+/ ;   \
     sexpr  : '(' <expr>* ')' ;               \
     qexpr : '{' <expr>* '}' ;                 \
     expr     : <number> | <symbol> | <sexpr> | <qexpr> | <string> | <comment> ; \
@@ -44,16 +44,16 @@ int main(int argc, char ** argv) {
         while (1) {
 
             /* Output our prompt and get input */
-            char * input = readline("MyCLisp> ");
+            char* input = readline("MyCLisp> ");
 
             /* Add input to history */
             add_history(input);
 
             /* Attempt to Parse the user Input */
             mpc_result_t r;
-            if (mpc_parse("<stdin>", input, MyCLisp, & r)) {
+            if (mpc_parse("<stdin>", input, MyCLisp, &r)) {
                 /* On Success Print the AST evaluated output */
-                lval * x = lval_eval(e, lval_read(r.output));
+                lval* x = lval_eval(e, lval_read(r.output));
                 lval_println(x);
                 lval_del(x);
                 mpc_ast_delete(r.output);
@@ -74,10 +74,10 @@ int main(int argc, char ** argv) {
         for (int i = 1; i < argc; i++) {
 
             /* Argument list with a single argument, the filename */
-            lval * args = lval_add(lval_sexpr(), lval_str(argv[i]));
+            lval* args = lval_add(lval_sexpr(), lval_str(argv[i]));
 
             /* Pass to builtin load and get the result */
-            lval * x = builtin_load(e, args);
+            lval* x = builtin_load(e, args);
 
             /* If the result is an error be sure to print it */
             if (x -> type == LVAL_ERR) {
