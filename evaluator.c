@@ -1,6 +1,6 @@
-#include "mpc.h"
+#include "dependencies/mpc.h"
 
-#include "headers.h"
+#include "dependencies/headers.h"
 
 /* Create a new number type lval */
 lval * lval_num(double x) {
@@ -106,6 +106,7 @@ void lval_del(lval * v) {
     free(v);
 }
 
+/*This function increases the length of count of list by 1 and reallocs space*/
 lval * lval_add(lval * v, lval * x) {
     v -> count++;
     v -> cell = realloc(v -> cell, sizeof(lval * ) * v -> count);
@@ -320,6 +321,15 @@ lval * builtin_op(lenv * e, lval * a, char * op) {
         if (strcmp(op, "*") == 0) {
             x -> num *= y -> num;
         }
+        if (strcmp(op, "%") == 0) {
+            if ((int)(y -> num) == 0) {
+                lval_del(x);
+                lval_del(y);
+                x = lval_err("Cannot perform mod by 0");
+                break;
+            }
+            x -> num = (int)(x->num) % (int)(y -> num);
+        }
         if (strcmp(op, "/") == 0) {
             if (y -> num == 0) {
                 lval_del(x);
@@ -353,6 +363,10 @@ lval * builtin_div(lenv * e, lval * a) {
     return builtin_op(e, a, "/");
 }
 
+lval * builtin_mod(lenv * e, lval * a) {
+    return builtin_op(e, a, "%");
+}
+
 void lenv_add_builtin(lenv * e, char * name, lbuiltin func) {
     lval * k = lval_sym(name);
     lval * v = lval_fun(func);
@@ -380,6 +394,7 @@ void lenv_add_builtins(lenv * e) {
     lenv_add_builtin(e, "-", builtin_sub);
     lenv_add_builtin(e, "*", builtin_mul);
     lenv_add_builtin(e, "/", builtin_div);
+    lenv_add_builtin(e, "%", builtin_mod);
     /* Comparison Functions */
     lenv_add_builtin(e, "if", builtin_if);
     lenv_add_builtin(e, "==", builtin_eq);

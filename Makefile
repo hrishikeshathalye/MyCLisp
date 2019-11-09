@@ -1,13 +1,13 @@
 CC=gcc
-CFLAGS=-I.
-DEPS = mpc.h headers.h
+CFLAGS=-I. -Ldependencies -l:libedit.so
+DEPS = dependencies/mpc.h dependencies/headers.h dependencies/readline.h dependencies/history.h
 OBJ = evaluator.o prompt.o mpc.o 
 
 %.o: %.c $(DEPS)
-	$(CC) -ledit -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 MyCLisp: $(OBJ)
-	$(CC) -ledit -o $@ $^ $(CFLAGS) -ledit
+	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
 	rm -f *.o MyCLisp

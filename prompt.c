@@ -3,13 +3,13 @@
 
 #include <stdlib.h>
 
-#include <editline/readline.h> /* Included to implement prompt reading and command line history*/
+#include "dependencies/readline.h" /* Included to implement prompt reading and command line history*/
 
-#include <editline/history.h>
+#include "dependencies/history.h"
 
-#include "mpc.h"
+#include "dependencies/mpc.h"
 
-#include "headers.h"
+#include "dependencies/headers.h"
 
 int main(int argc, char ** argv) {
     /*Parsers*/
@@ -25,7 +25,7 @@ int main(int argc, char ** argv) {
     mpca_lang(MPCA_LANG_DEFAULT,
     "                                                     \
     number   : /-?[0-9]+(\\.[0-9]+)?/ ;                             \
-    symbol :/[a-zA-Z0-9_+\\-*\\/\\\\=<>!&]+/ ;   \
+    symbol :/[a-zA-Z0-9_+\\-*%\\/\\\\=<>!&]+/ ;   \
     sexpr  : '(' <expr>* ')' ;               \
     qexpr : '{' <expr>* '}' ;                 \
     expr     : <number> | <symbol> | <sexpr> | <qexpr> | <string> | <comment> ; \
@@ -39,7 +39,7 @@ int main(int argc, char ** argv) {
     if (argc == 1) {
         /* Print Version and Exit Information */
         fputs("MyCLisp Version 3.0\n", stdout);
-        fputs("Press Ctrl+c to Exit\n", stdout);
+        fputs("Press Ctrl+C to Exit\n", stdout);
         /* In a never ending loop */
         while (1) {
 
