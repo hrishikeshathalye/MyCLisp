@@ -1,6 +1,6 @@
 # MyCLisp
-This is a Data Structures and Algorithms project based on building a Lisp like programming language using C. This implementation is inspired from the book Build Your Own Lisp by Daniel Holden and uses an open source parser combinator library called mpc. Lisps are a very powerful category of programming languages which can demonstrate homoiconicity viz. Code-Data Interchange. Mainly using recursion and meta programming, Lisps can shorten complex programs to a few lines of codes.
-For more details and exact specification of lisps in common practice (such as Clojure, Common Lisp, etc) have a look here : 
+This is a Data Structures and Algorithms project based on building a Lisp like programming language using C. This implementation is inspired from the book Build Your Own Lisp by Daniel Holden and uses an open source parser combinator library called mpc. Lisps are a very powerful category of programming languages which can demonstrate homoiconicity viz. Code-Data Interchange. Mainly using recursion and meta programming, Lisps can shorten complex programs to a few lines of code.
+For more details and exact specification of Lisps in common practice (such as Clojure, Common Lisp, etc) have a look here : 
 1. https://en.wikipedia.org/wiki/Lisp_(programming_language)
 2. https://twobithistory.org/2018/10/14/lisp.html
 
