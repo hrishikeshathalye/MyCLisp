@@ -1,7 +1,8 @@
 # MyCLisp
 This is a Data Structures and Algorithms project based on building a Lisp like programming language using C. This implementation is inspired from the book Build Your Own Lisp by Daniel Holden and uses an open source parser combinator library called mpc.
 
-## This is a brief summary / list of things this lisp supports : (Copied from Capabilities File)
+## This is a brief summary / list of things this lisp supports : 
+(Copied from Capabilities File)
 
 1. Decimal number handling  
 2. Textual operator handling (not, or, and, nil, true, false, etc)
