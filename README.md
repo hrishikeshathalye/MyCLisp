@@ -1,4 +1,7 @@
 # MyCLisp
+
+<b>UPDATE (JAN 2021) : This project now uses Autotools! All source code moved to the src directory, use the normal autotools workflow to build the project.</b>
+
 This is a Data Structures and Algorithms project based on building a Lisp like programming language using C. This implementation is inspired from the book Build Your Own Lisp by Daniel Holden and uses an open source parser combinator library called mpc. Lisps are a very powerful category of programming languages which can demonstrate homoiconicity viz. Code-Data Interchange. Mainly using recursion and meta programming, Lisps can shorten complex programs to a few lines of code.
 For more details and exact specification of Lisps in common practice (such as Clojure, Common Lisp, etc) have a look here : 
 1. https://en.wikipedia.org/wiki/Lisp_(programming_language)
@@ -87,5 +90,3 @@ I have learnt a lot over the course of this project and would encourage anyone e
 	* List functions - nth (nth item in list), take, drop, split, elem
 	* map (map - {5 6 7 8 2 22 44}), filter (filter (\ {x} {> x 2}) {5 2 11 -7 8 1}), foldl
 	* select - similar to switch case, case - same as switch case.
-
-<b>UPDATE (JAN 2021) : Project now uses Autotools! All source code moved to the src directory, use the normal autotools workflow to build the project.</b>
