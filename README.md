@@ -87,3 +87,5 @@ I have learnt a lot over the course of this project and would encourage anyone e
 	* List functions - nth (nth item in list), take, drop, split, elem
 	* map (map - {5 6 7 8 2 22 44}), filter (filter (\ {x} {> x 2}) {5 2 11 -7 8 1}), foldl
 	* select - similar to switch case, case - same as switch case.
+
+<b>UPDATE (JAN 2021) : Project now uses Autotools! All source code moved to the src directory, use the normal autotools workflow to build the project.</b>
